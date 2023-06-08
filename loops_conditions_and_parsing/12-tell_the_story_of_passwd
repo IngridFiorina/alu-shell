@@ -1,18 +1,7 @@
 #!/usr/bin/env bash
-#checking file exists and stuff
-
-name=school
-if [ -e $name ]; then
-    echo "school file exists"
-else
-    echo "school file does not exist"
-    exit 1
-fi
-if [ ! -s $name ]; then
-    echo "school file is empty"
-else
-    echo "school file is not empty"
-fi
-if [ -f $name ]; then
-    echo "school is a regular file"
-fi
+#cut read stuff with IFS
+file="/etc/passwd"
+while IFS=: read -r  f1 f2 f3 f4 f5 f6 f7
+do
+    echo "The user $f1 is part of the $f4 gang, lives in $f6 and rides $f7. $f3's place is protected by the passcode $f2, more info about the user here: $f5"
+done < $file
