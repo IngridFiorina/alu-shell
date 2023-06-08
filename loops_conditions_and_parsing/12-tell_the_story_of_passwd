@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
-# a Bash script that displays the content of the file /etc/passwd, using the while loop + IFS
-file="/etc/passwd"
+#checking file exists and stuff
 
-while IFS=: read -r username _ uid gid _ home shell
-do
-  user_info=$(grep -w "$username" "$file")
-  password=$(echo "$user_info" | awk -F':' '{print $2}')
-  group_info=$(grep -w "$gid" /etc/group)
-  group_name=$(echo "$group_info" | awk -F':' '{print $1}')
-  command=$(echo "$shell" | awk -F'/' '{print $NF}')
-  
-  echo "The user $username is part of the $group_name gang, lives in $home and rides $command."
-  echo "User $uid's place is protected by the passcode $password, more info about the user here: $user_info"
-  echo
-done < "$file"
+name=school
+if [ -e $name ]; then
+    echo "school file exists"
+else
+    echo "school file does not exist"
+    exit 1
+fi
+if [ ! -s $name ]; then
+    echo "school file is empty"
+else
+    echo "school file is not empty"
+fi
+if [ -f $name ]; then
+    echo "school is a regular file"
+fi
