@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Bash script that displays lines containing the bash
+processes=$(ps -eo pid,cmd | grep bash)
+printf "%-7s %s\n" "PID" "COMMAND"
+while IFS= read -r process; do
+ pid=$(echo "$process" | awk '{print $1}')
+  command=$(echo "$process" | awk '{print $2}')
+printf "%-7s %s\n" "$pid" "$command"
+done <<< "$processes"
