@@ -1,12 +1,3 @@
 #!/usr/bin/env bash
-#Bash script that stops 4-to_infinity_and_beyond process
-flag_file="/tmp/stop_infinity_flag"
-while true; do
-if [ -f "$flag_file" ]; then
-  rm "$flag_file"
-    break
-fi
-
-  echo "To infinity and beyond"
-  sleep 2
-done
+#stops a process
+pkill -f "4-to_infinity_and_beyond"
