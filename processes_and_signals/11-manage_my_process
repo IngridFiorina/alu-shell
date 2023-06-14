@@ -25,4 +25,4 @@ else
   fi
 else
   echo "Usage: manage_my_process {start|stop|restart}"
-  fi   
+  fi    
